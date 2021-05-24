@@ -44,7 +44,7 @@ export const login = (email, password) => async (dispatch) => {
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
-          : "Invalid email or password",
+          : error.message,
     });
   }
 };
@@ -88,8 +88,6 @@ export const register = (name, email, password) => async (dispatch) => {
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.response.status === 400
-          ? "User already exists Or Invalid user data"
           : error.message,
     });
   }
