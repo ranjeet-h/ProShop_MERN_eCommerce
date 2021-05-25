@@ -11,8 +11,8 @@ import { ORDER_PAY_RESET } from "../constants/orderConstants";
 
 const OrderScreen = ({ match }) => {
   const orderId = match.params.id;
-
-  const [sdkReady, setSdkReady] = useState(false);
+//chneg if you get error
+  const [sdkReady, setSdkReady] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -36,17 +36,17 @@ const OrderScreen = ({ match }) => {
   }
 
   useEffect(() => {
-    const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get("/api/config/paypal");
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-      script.async = true;
-      script.onload = () => {
-        setSdkReady(true);
-      };
-      document.body.appendChild(script);
-    };
+     const addPayPalScript = async () => {
+       const { data: clientId } = await axios.get("/api/config/paypal");
+       const script = document.createElement("script");
+       script.type = "text/javascript";
+       script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+       script.async = true;
+       script.onload = () => {
+         setSdkReady(true);
+       };
+       document.body.appendChild(script);
+     };
 
     if (!order || successPay) {
       dispatch({ type: ORDER_PAY_RESET });
@@ -173,7 +173,7 @@ const OrderScreen = ({ match }) => {
             </ListGroup.Item>
             {!order.isPaid && (
               <ListGroup.Item>
-                {loadingPay && <Loader />}
+                {/* {loadingPay && <Loader />} */}
                 {!sdkReady ? (
                   <Loader />
                 ) : (
