@@ -110,7 +110,7 @@ const PlaceOrderScreen = ({ history }) => {
           </ListGroup>
         </Col>
         <Col md={4}>
-          <ListGroup variant="flush">
+          <ListGroup variant="">
             <ListGroup.Item>
               <h2>Oreder Summary</h2>
             </ListGroup.Item>

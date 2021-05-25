@@ -17,7 +17,12 @@ import {
   userUpdateProfileReducer,
 } from "./reducers/userReducers";
 
-import { orderCreateReducer } from "./reducers/orderReducers";
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
+  orderListMyReducer,
+  orderPayReducer,
+} from "./reducers/orderReducers";
 
 //main reducer or combine reducer of all
 const reducer = combineReducers({
@@ -29,6 +34,9 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
+  orderListMy: orderListMyReducer
 });
 
 //handeling local storage
