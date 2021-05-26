@@ -4,8 +4,7 @@ import dotenv from "dotenv";
 import colors from "colors";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import path from "path";
-
-
+import morgan from "morgan";
 
 //Routes
 import productRoutes from "./routes/productRoutes.js";
@@ -13,12 +12,15 @@ import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
-
 dotenv.config();
 
 connectDB();
 
 const app = express();
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 //this will allow us to accept json data in the body
 app.use(express.json());
